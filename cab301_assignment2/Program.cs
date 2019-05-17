@@ -15,7 +15,7 @@ namespace cab301_assignment2
         static int count4;
 
         static void Main(string[] args) {
-            bool test = false; // true for test cases
+            bool test = true; // true for test cases
             bool full = true; // run tests for time and count, or just time
             int numVals = 10, jump = 10, reps = 10;
             if (test) Test();
@@ -110,17 +110,17 @@ namespace cab301_assignment2
             Dictionary<int[], int> cases = new Dictionary<int[], int> 
             {
                 // TEST CASES AND EXPECTED RESULTS HERE
-                { new int[] { 1, 2 }, 9},
-                { new int[] { 2, 2 }, 2},
-                { new int[] { 1, 2 }, 3},
+                { new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13  }, 1},
+                { new int[] {  }, int.MaxValue},
+                { new int[] { 1 }, int.MaxValue},
                 { new int[] { 2, 6 }, 4},
-                { new int[] { 1, 2 }, 1},
-                { new int[] { 2, 2 }, 2},
-                { new int[] { 1, 4 }, 3},
-                { new int[] { 1, 5 }, 4},
-                { new int[] { 2, 1 }, 1},
-                { new int[] { 1, 1 }, 3},
-                { new int[] { 2, 3 }, 8}
+                { new int[] { 10, 2 }, 8},
+                { new int[] { 2, 2 }, 0},
+                { new int[] { 49, 117, 52, 18, 69, 110, 1, 31, 23, 5, 92, 11, 45, 67, 21, 34, 78, 563 }, 2},
+                { new int[] { int.MinValue, int.MaxValue }, 1},
+                { new int[] { -29, -6, -38 }, 9},
+                { new int[] { 1, 1, 1, 1, 1, 1, 1 }, 0},
+                { new int[] { -12, -2, 9, 56, 87, -24 }, 10}
             };
 
             Dictionary<int[], int>.Enumerator e = cases.GetEnumerator();
@@ -129,6 +129,7 @@ namespace cab301_assignment2
                 Console.Write("Algorithm 1, Test Case {0} {1}  \t", i, MinDistance1(e.Current.Key) == e.Current.Value ? "passed" : "failed");
                 Console.Write("Algorithm 2, Test Case {0} {1}  \n", i, MinDistance2(e.Current.Key) == e.Current.Value ? "passed" : "failed");
             }
+            Console.ReadKey();
         }
 
         static int MinDistance1(int[] a) {
